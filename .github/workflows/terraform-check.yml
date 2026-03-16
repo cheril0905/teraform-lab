@@ -7,17 +7,20 @@ on:
 
 jobs:
   terraform:
-    name: Terraform Validation
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: day4
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Format Check
+      - name: Terraform Format
         run: terraform fmt -check
 
       - name: Terraform Init
